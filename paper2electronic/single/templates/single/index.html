@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>2</title>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jcrop -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.15/css/jquery.Jcrop.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.15/js/jquery.Jcrop.js"></script> -->
+
+    <!-- bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+    <!-- {% load static %}
+    <script src={% static 'main.js' %} defer></script> -->
+
+  </head>
+  <body>
+
+    <div class="card-group">
+
+
+      <!-- <div class="card col-sm-4">
+        <div class="card-block">
+          <h5 class="card-title">Add</h5>
+          <form action="" id="image-form">
+            {% csrf_token %}
+            <input id="id_file" type="file" name="upload" accept="image/*">
+            <input type="hidden" id="x">
+            <input type="hidden" id="y">
+            <input type="hidden" id="w">
+            <input type="hidden" id="h">
+            <input type="hidden" name="imgCropped" id="imgCropped" />
+            <input class="btn btn-primary my-4" type="button" id="btnCrop" value="Upload" style="display: none" />
+          </form>
+        </div>
+      </div> -->
+
+
+      <div class="card col-sm-4">
+        <div class="card-block">
+          <h5 class="card-title">Add</h5>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="upload" accept="image/*">
+            <button class="btn btn-primary my-4" type="submit">Upload</button>
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="card-group">
+      <div class="card col-sm-4">
+        <div class="card-block">
+          <h5 class="card-title">Rendered</h5>
+          <div id="image_prev_container">
+            <img id="image_prev" name="image_prev">
+            <canvas type="hidden" id="canvas" style="display: none"></canvas>
+          </div>
+          {% if file_url %}
+          <p>{{img_width}} X {{img_height}}</p>
+          <img src="{{ file_url }}" class="img-fluid" width="{{img_width}}" height="{{img_height}}">
+          {% endif %}
+        </div>
+      </div>
+      <div class="card col-sm-4">
+        <div class="card-block">
+          <h5 class="card-title">Cropped</h5>
+          {% if image_cropped %}
+          <p>{{cropped_img_width}} X {{cropped_img_height}}</p>
+          <img src="{{ image_cropped }}" class="img-fluid">
+          {% endif %}
+        </div>
+      </div>
+      <div class="card col-sm-4">
+        <div class="card-block">
+          <h5 class="card-title">Extracted</h5>
+          <div class="d-flex justify-content-center align-items-center">
+            <div>{{extracted_text|safe}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
