@@ -4,13 +4,10 @@ from django.core.files.storage import FileSystemStorage
 import pandas as pd
 import cv2
 import easyocr
-from pytesseract import Output
-import pytesseract
+# from pytesseract import Output
+# import pytesseract
 import numpy as np
 from math import dist
-
-
-pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
 
 
 def indexpage(request):

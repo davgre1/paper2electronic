@@ -8,7 +8,7 @@ $(function(){
       if(file_name.length > 0) {
         addJcrop(this);
       }
-   });
+    });
       
     var addJcrop = function(input) {
       if ($('#image_prev').data('Jcrop')) {
